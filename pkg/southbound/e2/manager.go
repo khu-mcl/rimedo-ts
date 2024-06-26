@@ -134,7 +134,7 @@ func (m *Manager) watchMHOChanges(ctx context.Context, e2nodeID topoapi.ID) {
 	for ctrlReqMsg := range m.ctrlReqChs[string(e2nodeID)] {
 		go func(ctrlReqMsg *e2api.ControlMessage) {
 			node := m.e2client.Node(e2client.NodeID(e2nodeID))
-			_, _ = node.Control(ctx, ctrlReqMsg)
+			_, _ = node.Control(ctx, ctrlReqMsg, nil)
 		}(ctrlReqMsg)
 	}
 }
